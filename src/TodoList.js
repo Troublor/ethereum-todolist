@@ -59,7 +59,7 @@ class TodoList extends Component {
     this.state = {
       todoItems: [],
       newItem: '',
-      account: web3.eth.accounts[0],
+      account: "0x6463f93d65391a8b7c98f0fc8439efd5d38339d9",
       pending: false,
       calling: false
     };

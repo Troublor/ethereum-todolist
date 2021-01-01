@@ -2,9 +2,10 @@ import Web3 from 'web3';
 import contract from 'truffle-contract';
 import _ from 'lodash';
 
-const provider = new Web3.providers.HttpProvider('http://localhost:8545');
-
-const web3 = new Web3(provider);
+// const provider = new Web3.providers.HttpProvider('http://localhost:8545');
+// eslint-disable-next-line no-undef
+const provider = ethereum;
+const web3 = window.web3;
 export default web3;
 
 export const selectContractInstance = (contractBuild) => {
