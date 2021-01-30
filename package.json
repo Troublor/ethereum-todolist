@@ -36,6 +36,7 @@
     "http-proxy-middleware": "0.17.2",
     "jest": "17.0.2",
     "json-loader": "0.5.4",
+    "karma-coverage-istanbul-reporter": "^3.0.3",
     "object-assign": "4.1.0",
     "path-exists": "2.1.0",
     "postcss-loader": "1.0.0",
@@ -55,6 +56,8 @@
   },
   "dependencies": {
     "dotenv": "^2.0.0",
+    "istanbul-instrumenter-loader": "^3.0.1",
+    "nyc": "^15.1.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "styled-components": "^1.4.4",
@@ -62,7 +65,7 @@
     "web3": "v1.0.0-beta.55"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "npx nyc --temp-dir ./.nyc_output/server node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "watch-contracts": "gulp watch-contracts",

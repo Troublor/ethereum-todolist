@@ -6,6 +6,7 @@ var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 var WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 var getClientEnvironment = require('./env');
 var paths = require('./paths');
+var path = require('path');
 
 
 
@@ -179,6 +180,16 @@ module.exports = {
           name: 'fonts/[name].[hash].[ext]'
         }
       },
+      // instrument only testing sources with Istanbul
+      {
+        test: /\.js$/,
+        loader: 'istanbul-instrumenter-loader',
+        query: {
+          esModules: true
+        },
+        include: path.resolve('src/'),
+        enforce: "post",
+      }
       // Truffle solidity loader to watch for changes in Solitiy files and hot
       // reload contracts with webpack.
       //
@@ -189,7 +200,7 @@ module.exports = {
         test: /\.sol$/,
         loader: 'truffle-solidity?network_id=123'
       }*/
-    ]
+    ],
   },
 
   // We use PostCSS for autoprefixing only.
